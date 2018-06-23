@@ -4,7 +4,7 @@ const webpack = require('webpack');
 module.exports = {
   mode: 'development',
   entry: {
-    dll: './src/dllplugins.js',
+    dll: './src/index.js',
   },
   output: {
     path: path.join(__dirname, 'dist'),

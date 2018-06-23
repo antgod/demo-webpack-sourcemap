@@ -1,8 +1,5 @@
 import _ from 'lodash';
-import './style.css';
-import Icon from './icon.png';
 import app from './app.js';
-import { say } from 'Templates/user';
 
 function component() {
   var element = document.createElement('div');
