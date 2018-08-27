@@ -1,19 +1,28 @@
-const path = require('path');
-const webpack = require('webpack');
+const fs = require('fs')
+const path = require('path')
+const webpack = require('webpack')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const devtool = 'source-map'
 
 module.exports = {
-  mode: 'development',
   entry: {
-    dll: './src/dllplugins.js',
+    common: './src/sourcemap.js',
   },
   output: {
-    path: path.join(__dirname, 'dist'),
-    filename: '[name].bundle.js'
+    path: path.join(__dirname, './dist'),
+    filename: 'dist.js',
   },
   plugins: [
-    new webpack.DllReferencePlugin({
-      context: __dirname,
-      manifest: require('./dist/vendor-manifest.json')
-    })
-  ]
-};
+    // new UglifyJsPlugin({
+    //   uglifyOptions: {
+    //     output: {
+    //       ascii_only: true
+    //     },
+    //   },
+    // }),
+  ].filter(item => item),
+  module: {
+    rules: []
+  },
+  devtool,
+}

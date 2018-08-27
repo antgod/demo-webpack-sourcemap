@@ -1,41 +1,72 @@
 {
-  "name": "webpack-demo",
-  "version": "1.0.0",
+  "name": "cicada-builder",
+  "version": "2.0.0",
   "description": "",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack -w",
-    "start": "webpack-dev-server",
-    "server": "node server.js"
-  },
-  "private": true,
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.4",
-    "clean-webpack-plugin": "^0.1.19",
-    "css-loader": "^0.28.11",
-    "express": "^4.16.3",
-    "extract-text-webpack-plugin": "^3.0.2",
-    "file-loader": "^1.1.11",
-    "happypack": "^5.0.0",
-    "html-webpack-plugin": "^3.2.0",
-    "react-dom": "^16.4.1",
-    "style-loader": "^0.21.0",
-    "webpack": "^4.12.0",
-    "webpack-build-notifier": "^0.1.27",
-    "webpack-cli": "^3.0.8",
-    "webpack-dev-middleware": "^3.1.3",
-    "webpack-dev-server": "^3.1.4",
-    "webpack-manifest-plugin": "^2.0.3",
-    "webpack-plugin-notifier": "^0.1.0"
+    "webpack": "webpack --colors",
+    "reinstall": "rm -rf node_modules && tnpm i",
+    "build": "tnpm run reinstall && tnpm run webpack"
   },
   "dependencies": {
-    "babel-loader": "^7.1.4",
-    "express": "^4.16.3",
-    "jquery": "^3.3.1",
-    "react": "^16.4.1"
-  }
+    "@alipay/cicada-render": "0.0.165",
+    "@alipay/cicada-polyfill": "^0.1.0",
+    "autoprefixer": "^6.5.1",
+    "babel-core": "^6.16.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-import": "^1.1.0",
+    "babel-plugin-transform-builtin-extend": "^1.1.0",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-transform-remove-strict-mode": "0.0.2",
+    "babel-plugin-transform-runtime": "^6.9.0",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-react": "^6.11.1",
+    "babel-preset-stage-0": "^6.5.0",
+    "babel-register": "^6.7.2",
+    "babel-runtime": "^6.11.6",
+    "css-loader": "^0.28.9",
+    "style-loader": "^0.13.1",
+    "postcss-loader": "^1.1.0",
+    "postcss-pxtorem": "^3.3.1",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "json-loader": "^0.5.7",
+    "less": "^2.6.1",
+    "less-loader": "^2.2.3",
+    "svg-sprite-loader": "^3.6.2",
+    "uglifyjs-webpack-plugin": "^1.1.6",
+    "unicode-loader": "^1.0.6",
+    "webpack": "^3.10.0"
+  },
+  "babel": {
+    "presets": [
+      "react",
+      "es2015",
+      "stage-0"
+    ],
+    "plugins": [
+      "transform-runtime",
+      "transform-remove-strict-mode",
+      "transform-decorators-legacy",
+      [
+        "import",
+        {
+          "libraryName": "antd-mobile",
+          "style": "css"
+        },
+        {
+          "libraryName": "antd",
+          "style": true
+        }
+      ],
+      [
+        "babel-plugin-transform-builtin-extend",
+        {
+          "globals": [
+            "Error"
+          ]
+        }
+      ]
+    ]
+  },
+  "author": "cicada-fe-team"
 }
